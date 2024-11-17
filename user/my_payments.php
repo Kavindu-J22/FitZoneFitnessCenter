@@ -177,8 +177,8 @@ $result = $stmt->get_result();
     <main>
         <h2>My Payments</h2>
         <div class="back-to-db-container">
-        <a class="back-to-db" href="dashboard.php">Back to Dashboard</a>
-    </div>
+            <a class="back-to-db" href="dashboard.php">Back to Dashboard</a>
+        </div>
         <table>
             <thead>
                 <tr>

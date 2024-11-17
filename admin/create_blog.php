@@ -32,11 +32,122 @@ $blogs = $conn->query("SELECT * FROM blogs");
     <title>Create Blog Post</title>
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #34495E;
+            margin-bottom: 20px;
+        }
+        .back-to-db-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+        .back-to-db {
+            font-size: 16px;
+            color: #2980B9;
+            text-decoration: none;
+        }
+        .back-to-db:hover {
+            text-decoration: underline;
+        }
+        form {
+            display: grid;
+            gap: 15px;
+        }
+        label {
+            font-size: 16px;
+            color: #34495E;
+        }
+        input[type="text"], textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+        }
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 12px 18px;
+            font-size: 16px;
+            background-color: #2980B9;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1A6D8C;
+        }
+        .blog-posts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .blog-post {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 48%;
+            transition: transform 0.3s ease;
+        }
+        .blog-post:hover {
+            transform: translateY(-10px);
+        }
+        .blog-post img {
+            max-width: 100%;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .blog-post h4 {
+            color: #2980B9;
+            margin-bottom: 10px;
+        }
+        .blog-post p {
+            font-size: 14px;
+            color: #7F8C8D;
+            margin-bottom: 15px;
+        }
+        .btn {
+            padding: 8px 12px;
+            background-color: #34495E;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        .btn:hover {
+            background-color: #2C3E50;
+        }
+    </style>
 </head>
 <body>
     <?php include '../includes/header.php'; ?>
     <main>
         <h2>Create Blog Post</h2>
+        <div class="back-to-db-container">
+            <a class="back-to-db" href="dashboard.php">Back to Dashboard</a>
+        </div>
         <form method="post" action="create_blog.php">
             <label for="category">Category:</label>
             <input type="text" id="category" name="category" required>
@@ -62,7 +173,7 @@ $blogs = $conn->query("SELECT * FROM blogs");
                     <h4><?php echo htmlspecialchars($blog['name']); ?></h4>
                     <p><strong>Category:</strong> <?php echo htmlspecialchars($blog['category']); ?></p>
                     <p><?php echo htmlspecialchars($blog['description']); ?></p>
-                    <img src="<?php echo htmlspecialchars($blog['image_url']); ?>" alt="Blog Image" width="200">
+                    <img src="<?php echo htmlspecialchars($blog['image_url']); ?>" alt="Blog Image">
                     <a href="edit_blog.php?id=<?php echo $blog['id']; ?>" class="btn">Edit</a>
                     <a href="delete_blog.php?id=<?php echo $blog['id']; ?>" class="btn" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
                 </div>

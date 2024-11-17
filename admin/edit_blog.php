@@ -49,31 +49,114 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Blog Post</title>
-    <link rel="stylesheet" href="../css/style.css">
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+    <style>
+        /* Edit Blog Post Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .edit-blog-main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        .edit-blog-main h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .back-to-db-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .back-to-db {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .back-to-db:hover {
+            text-decoration: underline;
+        }
+
+        .edit-blog-form label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .input-field, .textarea-field {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .textarea-field {
+            height: 150px;
+        }
+
+        .upload-button, .submit-button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 5px;
+        }
+
+        .upload-button:hover, .submit-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <?php include '../includes/header.php'; ?>
-    <main>
+
+    <main class="edit-blog-main">
         <h2>Edit Blog Post</h2>
-        <form method="post" action="edit_blog.php?id=<?php echo $blogId; ?>">
+        
+        <!-- Back Button -->
+        <div class="back-to-db-container">
+            <a class="back-to-db" href="create_blog.php">&larr; Back to Blog List</a>
+        </div>
+
+        <form method="post" action="edit_blog.php?id=<?php echo $blogId; ?>" class="edit-blog-form">
             <label for="category">Category:</label>
-            <input type="text" id="category" name="category" value="<?php echo htmlspecialchars($blog['category']); ?>" required>
+            <input type="text" id="category" name="category" value="<?php echo htmlspecialchars($blog['category']); ?>" required class="input-field">
 
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($blog['name']); ?>" required>
+            <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($blog['name']); ?>" required class="input-field">
 
             <label for="description">Description:</label>
-            <textarea id="description" name="description" required><?php echo htmlspecialchars($blog['description']); ?></textarea>
+            <textarea id="description" name="description" required class="textarea-field"><?php echo htmlspecialchars($blog['description']); ?></textarea>
 
             <label for="image">Image:</label>
-            <input type="file" id="image" accept="image/*">
+            <input type="file" id="image" accept="image/*" class="input-field">
             <input type="hidden" name="image_url" id="image_url" value="<?php echo htmlspecialchars($blog['image_url']); ?>" required>
-            <button type="button" onclick="uploadImage()">Upload New Image</button>
+            <button type="button" class="upload-button" onclick="uploadImage()">Upload New Image</button>
 
-            <button type="submit">Update Blog Post</button>
+            <button type="submit" class="submit-button">Update Blog Post</button>
         </form>
     </main>
+
     <?php include '../includes/footer.php'; ?>
 
     <script>
@@ -108,5 +191,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     </script>
+
 </body>
 </html>

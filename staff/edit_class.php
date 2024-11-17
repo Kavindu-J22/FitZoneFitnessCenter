@@ -39,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     header("Location: create_class.php");
     exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -49,12 +48,123 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Class</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* General page layout */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Back button */
+        .back-btn {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        form label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        form input[type="text"],
+        form input[type="time"],
+        form input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #333;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .error, .success {
+            text-align: center;
+            font-size: 16px;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            form button {
+                width: auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <?php include '../includes/header.php'; ?>
     <main>
+        <!-- Back Button -->
+        <a href="create_class.php" class="back-btn">← Back to Classes</a>
+
         <h2>Edit Class</h2>
-        
+
+        <!-- Display class data -->
         <?php if ($class): ?>
             <form method="post" action="edit_class.php?id=<?php echo $class['id']; ?>">
                 <label for="class_type">Class Type:</label>
@@ -78,6 +188,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>Class not found!</p>
         <?php endif; ?>
     </main>
-    <?php include '../includes/footer.php'; ?>
 </body>
 </html>

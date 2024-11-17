@@ -41,12 +41,145 @@ $result = $conn->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Payments</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .back-to-db-container {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .back-to-db {
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+            border: 1px solid #007bff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            background-color: #f1f9ff;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-db:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f9ff;
+            color: #333;
+        }
+
+        td a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        td button {
+            padding: 6px 12px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        td button:hover {
+            opacity: 0.8;
+        }
+
+        .accept-button {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .reject-button {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .accept-button:hover {
+            background-color: #218838;
+        }
+
+        .reject-button:hover {
+            background-color: #c82333;
+        }
+
+        .error, .success {
+            color: white;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .error {
+            background-color: #dc3545;
+        }
+
+        .success {
+            background-color: #28a745;
+        }
+    </style>
 </head>
 <body>
     <?php include '../includes/header.php'; ?>
     <main>
         <h2>All Payments</h2>
-        <table border="1" cellpadding="10" cellspacing="0">
+        <div class="back-to-db-container">
+            <a class="back-to-db" href="dashboard.php">Back to Dashboard</a>
+        </div>
+
+        <?php if (isset($error_message)): ?>
+            <p class="error"><?php echo $error_message; ?></p>
+        <?php endif; ?>
+
+        <?php if (isset($success_message)): ?>
+            <p class="success"><?php echo $success_message; ?></p>
+        <?php endif; ?>
+
+        <table>
             <thead>
                 <tr>
                     <th>User ID</th>
@@ -79,24 +212,24 @@ $result = $conn->query($query);
                                     <form method="post" style="display: inline;">
                                         <input type="hidden" name="payment_id" value="<?php echo $row['id']; ?>">
                                         <input type="hidden" name="action" value="accept">
-                                        <button type="submit">Accept</button>
+                                        <button type="submit" class="accept-button">Accept</button>
                                     </form>
                                     <form method="post" style="display: inline;">
                                         <input type="hidden" name="payment_id" value="<?php echo $row['id']; ?>">
                                         <input type="hidden" name="action" value="reject">
-                                        <button type="submit">Reject</button>
+                                        <button type="submit" class="reject-button">Reject</button>
                                     </form>
                                 <?php elseif ($row['status'] === 'accepted'): ?>
                                     <form method="post" style="display: inline;">
                                         <input type="hidden" name="payment_id" value="<?php echo $row['id']; ?>">
                                         <input type="hidden" name="action" value="reject">
-                                        <button type="submit">Reject</button>
+                                        <button type="submit" class="reject-button">Reject</button>
                                     </form>
                                 <?php elseif ($row['status'] === 'rejected'): ?>
                                     <form method="post" style="display: inline;">
                                         <input type="hidden" name="payment_id" value="<?php echo $row['id']; ?>">
                                         <input type="hidden" name="action" value="accept">
-                                        <button type="submit">Accept</button>
+                                        <button type="submit" class="accept-button">Accept</button>
                                     </form>
                                 <?php endif; ?>
                             </td>
@@ -110,6 +243,5 @@ $result = $conn->query($query);
             </tbody>
         </table>
     </main>
-    <?php include '../includes/footer.php'; ?>
 </body>
 </html>

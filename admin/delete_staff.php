@@ -32,8 +32,63 @@ $stmt->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete Staff Member</title>
     <link rel="stylesheet" href="../css/style.css"> <!-- Link to your CSS file -->
+    <style>
+        /* Custom styles for decoration */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+        header, footer {
+            background-color: #34495E;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            max-width: 900px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            font-size: 1rem;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        .success {
+            color: #27ae60;
+            font-size: 1.2rem;
+        }
+        .error {
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
     <?php include '../includes/header.php'; ?> <!-- Include the header -->
@@ -53,6 +108,6 @@ $stmt->close();
             <a href="add_staff.php" class="btn">Cancel</a>
         <?php endif; ?>
     </main>
-    <?php include '../includes/footer.php'; ?> <!-- Include the footer -->
+
 </body>
 </html>

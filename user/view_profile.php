@@ -164,9 +164,24 @@ if ($result->num_rows === 1) {
 
         <a href="edit_profile.php">Edit Profile</a>
         <br><br>
-        <a href="dashboard.php">Back to Dashboard</a>
+        <a href="#" id="back-to-dashboard" class="back-to-db">Back to Dashboard</a>
     </div>
 </main>
+
+<script>
+    // JavaScript to dynamically navigate based on user role
+    const userRole = <?php echo json_encode($user['role']); ?>; // Get the user role from PHP
+    const dashboardBtn = document.getElementById('back-to-dashboard');
+    
+    // Set the appropriate link based on the user's role
+    if (userRole === 'customer') {
+        dashboardBtn.href = 'dashboard.php';
+    } else if (userRole === 'admin') {
+        dashboardBtn.href = '../admin/dashboard.php';
+    } else if (userRole === 'staff') {
+        dashboardBtn.href = '../staff/dashboard.php';
+    }
+</script>
 
 </body>
 </html>
