@@ -57,6 +57,84 @@ if (isset($_GET['class_id'])) {
     <meta charset="UTF-8">
     <title>Booking Confirmation</title>
     <link rel="stylesheet" href="../css/style.css"> <!-- Link to your CSS file -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            width: 80%;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 30px;
+            color: #2d3436;
+            margin-bottom: 30px;
+        }
+
+        .notification,
+        .success,
+        .error {
+            font-size: 18px;
+            color: #2d3436;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #dfe6e9;
+        }
+
+        .success {
+            background-color: #00b894;
+            color: white;
+        }
+
+        .error {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #00b894;
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #098e67;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 16px;
+            }
+        }
+    </style>
 </head>
 <body>
     <?php include '../includes/header.php'; ?> <!-- Include the header -->
@@ -76,6 +154,5 @@ if (isset($_GET['class_id'])) {
         <?php endif; ?>
     </main>
 
-    <?php include '../includes/footer.php'; ?> <!-- Include the footer -->
 </body>
 </html>

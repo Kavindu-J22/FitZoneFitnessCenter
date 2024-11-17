@@ -32,29 +32,141 @@ if ($result->num_rows === 1) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
+    <link rel="stylesheet" href="../css/style.css"> <!-- Assuming you have a general style.css file -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .profile-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .profile-container h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .profile-container table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        .profile-container th,
+        .profile-container td {
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .profile-container th {
+            background-color: #3498db;
+            color: white;
+            border-radius: 6px;
+        }
+
+        .profile-container td {
+            background-color: #ecf0f1;
+            border-radius: 6px;
+        }
+
+        .profile-container a {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .profile-container a:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 20px;
+                width: 90%;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Profile of <?php echo htmlspecialchars($user['username']); ?></h1>
-    <table border="1">
-        <tr>
-            <th>Username</th>
-            <td><?php echo htmlspecialchars($user['username']); ?></td>
-        </tr>
-        <tr>
-            <th>Email</th>
-            <td><?php echo htmlspecialchars($user['email']); ?></td>
-        </tr>
-        <tr>
-            <th>Contact Number</th>
-            <td><?php echo htmlspecialchars($user['contact_number']); ?></td>
-        </tr>
-        <tr>
-            <th>Address</th>
-            <td><?php echo htmlspecialchars($user['address']); ?></td>
-        </tr>
-    </table>
-    <a href="edit_profile.php">Edit Profile</a>
-    <br><br>
-    <a href="javascript:history.back()">Back to dashboard</a>
+
+
+<?php include '../includes/header.php'; ?>
+
+
+<main>
+    <div class="profile-container">
+        <h1><?php echo htmlspecialchars($user['username']); ?>'s Profile</h1>
+
+        <table>
+            <tr>
+                <th>Username</th>
+                <td><?php echo htmlspecialchars($user['username']); ?></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><?php echo htmlspecialchars($user['email']); ?></td>
+            </tr>
+            <tr>
+                <th>Contact Number</th>
+                <td><?php echo htmlspecialchars($user['contact_number']); ?></td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><?php echo htmlspecialchars($user['address']); ?></td>
+            </tr>
+        </table>
+
+        <a href="edit_profile.php">Edit Profile</a>
+        <br><br>
+        <a href="dashboard.php">Back to Dashboard</a>
+    </div>
+</main>
+
 </body>
 </html>
