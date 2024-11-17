@@ -2,12 +2,6 @@
 include '../includes/db.php'; // Database connection
 session_start();
 
-// Check if the user is an admin
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../user/login.php");
-    exit();
-}
-
 // Handle blog post submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category = trim($_POST['category']);
