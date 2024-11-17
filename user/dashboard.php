@@ -6,6 +6,7 @@
     <title>Custommer Dashboard</title>
 </head>
 <body>
+<?php include '../includes/header.php'; ?>
     <h1>
         <?php
         echo "Hello, Customer!";

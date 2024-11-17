@@ -54,5 +54,7 @@ if ($result->num_rows === 1) {
         </tr>
     </table>
     <a href="edit_profile.php">Edit Profile</a>
+    <br><br>
+    <a href="javascript:history.back()">Back to dashboard</a>
 </body>
 </html>
