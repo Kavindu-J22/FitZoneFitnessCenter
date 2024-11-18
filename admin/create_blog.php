@@ -175,7 +175,7 @@ $blogs = $conn->query("SELECT * FROM blogs");
                     <p><?php echo htmlspecialchars($blog['description']); ?></p>
                     <img src="<?php echo htmlspecialchars($blog['image_url']); ?>" alt="Blog Image">
                     <a href="edit_blog.php?id=<?php echo $blog['id']; ?>" class="btn">Edit</a>
-                    <a href="delete_blog.php?id=<?php echo $blog['id']; ?>" class="btn" onclick="return confirm('Are you sure you want to delete this post?');">Delete</a>
+                    <a href="delete_blog.php?id=<?php echo $blog['id']; ?>" class="btn" onclick="return confirm('Admin only can delete blogs. Are you sure you want to Continue this ?');">Delete</a>
                 </div>
             <?php endwhile; ?>
         </div>

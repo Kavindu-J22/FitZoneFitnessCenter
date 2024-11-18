@@ -2,11 +2,6 @@
 include '../includes/db.php'; // Database connection
 session_start();
 
-// Check if the user is an admin
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../user/login.php");
-    exit();
-}
 
 // Get the class ID from the query string
 $classId = isset($_GET['id']) ? intval($_GET['id']) : 0;

@@ -2,11 +2,6 @@
 include '../includes/db.php'; // Database connection
 session_start();
 
-// Check if the user is logged in and is an admin
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../user/login.php"); // Redirect to login if not admin
-    exit();
-}
 
 // Get the class ID from the URL
 if (!isset($_GET['id'])) {

@@ -274,7 +274,7 @@ $classes = $conn->query("SELECT * FROM classes");
                     <p><strong>Date:</strong> <?php echo htmlspecialchars($class['date']); ?></p>
                     <p><strong>Conductor:</strong> <?php echo htmlspecialchars($class['conductor']); ?></p>
                     <a href="edit_class.php?id=<?php echo $class['id']; ?>" class="btn btn-edit">Edit</a>
-                    <a href="delete_class.php?id=<?php echo $class['id']; ?>" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this class?');">Delete</a>
+                    <a href="delete_class.php?id=<?php echo $class['id']; ?>" class="btn btn-delete" onclick="return confirm('Only admin Can Delete Classes. Are you sure you want to Continue this?');">Delete</a>
                     <a href="classAttend.php?id=<?php echo $class['id']; ?>" class="btn btn-view">View Appointments and Attenders</a>
                 </div>
             <?php endwhile; ?>

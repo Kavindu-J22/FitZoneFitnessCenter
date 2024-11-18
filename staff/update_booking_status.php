@@ -2,11 +2,6 @@
 include '../includes/db.php'; // Database connection
 session_start();
 
-// Check if the user is logged in and is an admin
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: ../user/login.php"); // Redirect to login if not admin
-    exit();
-}
 
 // Check if the booking ID, action (Accept/Reject), and class ID are provided
 if (isset($_GET['booking_id']) && isset($_GET['action']) && isset($_GET['class_id'])) {
